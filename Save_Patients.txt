@@ -1,0 +1,599 @@
+/* Best Submissions:
+C:
+#include <stdio.h>
+ 
+int main()
+{
+   int i,j,k,a[1000],b[1000],temp,temp1;
+   scanf("%d\n",&i);
+   for(j=0;j<i;j++){
+       scanf("%d",&a[j]); 
+       for(j=0;j<i;j++){
+         if(a[ j ] < a[ j+1] ) {
+                temp = a[ j ];
+                a[ j ] = a[ j+1 ];
+                a[ j + 1] = temp; 
+         }
+     }
+      }
+    for(k=0;k<i;k++){
+        scanf("%d",&b[k]);
+         for(k=0;k<i;k++){
+        if(b[k] < b[k+1] ) {
+                temp1 = b[k];
+                b[k] = b[k+1 ];
+                b[k+1] = temp1;
+      }
+    }
+    }
+    if(b[0]>a[0])
+        printf("No");
+    else
+        printf("Yes");
+    }
+
+C++:
+#include <iostream>
+using namespace std;
+ 
+int main() {
+	// your code goes here
+	int n;
+	cin>>n;
+	int a[n];
+	int b[n];
+	for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+		}
+	for(int i=0;i<n-1;i++)
+		{
+			for(int j=0;j<n-i-1;j++)
+				{
+					if(a[j]>a[j+1])
+						{	int temp;
+							temp = a[j];
+							a[j] = a[j+1];
+							a[j+1] = temp;
+						
+						}
+				}
+		}
+	for(int i=0;i<n;i++)
+		{
+			cin>>b[i];
+		}	
+	for(int i=0;i<n-1;i++)
+		{
+			for(int j=0;j<n-i-1;j++)
+				{
+					if(b[j]>b[j+1])
+						{	int temp;
+							temp = b[j];
+							b[j] = b[j+1];
+							b[j+1] = temp;
+							
+						}
+				}
+		}
+	
+	for(int i=0;i<n;i++)
+	{
+		if(a[i]<b[i]){cout<<"No"<<endl;break;}
+		if(a[i]>=b[i]&& i ==n-1)cout<<"Yes"<<endl;
+	}
+	
+	return 0;
+}
+C++14:
+#include<bits/stdc++.h>
+using namespace std;
+void swap(int&i,int&j)
+{
+    int x=j;
+    j=i;
+    i=x;
+}
+void Sort(vector<int> &V)
+{
+    for(int i=0;i<V.size()-1; i++)
+    for(int j=i+1;j<V.size(); j++)
+    {
+        if(V[j]<V[i])
+        swap(V[j],V[i]);
+    }
+}
+ 
+int main()
+{
+    
+    int N; cin>>N;
+    vector<int> V(N);
+    for(auto &i:V)
+    cin>>i;
+    vector<int>P(N);
+    for(auto&i:P)
+    cin>>i;
+    Sort(V);Sort(P);
+    bool status=true;
+    for(int i; i<N; i++)
+    {
+        if(V[i]<P[i]){ status=false; break;}
+    }
+    if(status)cout<<"Yes";
+    else cout<<"No";
+        
+    return 0;
+}
+
+C#:
+using System; 
+using System.Numerics;
+class MyClass {
+    static void Main(string[] args) {
+       int vacine = Convert.ToInt32(Console.ReadLine());
+       var sVArr = Console.ReadLine().Split(' ');
+       int[] sV = Array.ConvertAll(sVArr,Int32.Parse);
+       var mPArr = Console.ReadLine().Split(' ');
+       int[] mP = Array.ConvertAll(mPArr,Int32.Parse);
+       for(int i = 0;i<vacine;i++)
+       {
+           for(int j=i;j<vacine-1;j++)
+           {
+               if(sV[j]>sV[j+1])
+               {
+                   var temp = sV[j];
+                   sV[j] = sV[j+1];
+                   sV[j+1] = temp;
+               }
+           }
+       }
+       
+        for(int i = 0;i<vacine;i++)
+       {
+           for(int j=i;j<vacine-1;j++)
+           {
+               if(mP[j]>mP[j+1])
+               {
+                   var temp = mP[j];
+                   mP[j] = mP[j+1];
+                   mP[j+1] = temp;
+               }
+           }
+       }
+       bool flag = false;
+        for(int i = 0;i<vacine;i++)
+       {
+          if(sV[i]<mP[i])
+          {
+              flag = true;
+              break;
+          }
+       }
+       if(flag)
+       Console.WriteLine("No");
+       else
+       Console.WriteLine("Yes");
+       
+    }
+}
+
+Java:
+import java.util.Scanner;
+import java.util.Arrays;
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+		Scanner scan = new Scanner(System.in);
+		int N,patient[],vaccine[];
+		N = scan.nextInt();
+		patient = new int[N];
+		vaccine = new int[N];
+		for(int i=0; i<N; ++i){
+			vaccine[i] = scan.nextInt();
+		//	System.out.println(vaccine[i]);
+		}
+		for(int i=0; i<N; ++i){
+			patient[i] = scan.nextInt();
+		}
+		Arrays.sort(vaccine);
+		Arrays.sort(patient);
+		for(int i=0; i<N; ++i){
+		//	System.out.print(patient[i]+" ");
+		}
+		//System.out.println();
+		for(int i=0; i<N; ++i){
+		//	System.out.print(vaccine[i]+" ");
+		}
+		//System.out.println();
+		int i;
+		for(i=0; i<N; ++i){
+			if(vaccine[i]-patient[i]<0)
+				break;
+		}
+		if(i==N)
+        	System.out.println("Yes");
+        else
+        	System.out.println("No");
+    }
+}
+
+Java8:
+import java.util.*;
+ 
+ 
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+      
+    
+        Scanner s = new Scanner(System.in);
+        int N = s.nextInt();
+        int vacin[]=new int[N];
+        int pcnt[]=new int[N];
+        int c=0,i,temp;
+ 
+        for (i = 0; i < N; i++) {
+            vacin[i]=s.nextInt();
+        }
+ 
+        for(i=0;i<N;i++){
+            pcnt[i]=s.nextInt();
+        }
+ 
+        for(i=0;i<N-1;i++){
+            for(int j=1;j<N-i-1;j++){
+                if(vacin[i]>vacin[j]){
+                   temp=vacin[i];
+                   vacin[i]=vacin[j];
+                   vacin[j]=temp;
+                }
+ 
+                if(pcnt[i]>pcnt[j]){
+                   temp=pcnt[i];
+                   pcnt[i]=pcnt[j];
+                   pcnt[j]=temp;
+                }
+            }
+ 
+        }
+        for(i=0;i<N;i++){
+            if(vacin[i]<pcnt[i]){
+                c++;
+            }
+        }
+ 
+        if(c>0)
+            System.out.println("No");
+        else
+            System.out.println("Yes");
+    }
+ 
+}
+
+JavaScript(Rhino):
+// Below is a sample code to process input from STDIN.
+// Equivalent in effect to the Java declaration import java.io.*;
+importPackage(java.io);
+importPackage(java.lang);
+importPackage(java.math);
+importPackage(java.util);
+ 
+var sc = new Scanner(System['in']);
+var canCure = true;
+var N = sc.nextInt();
+var vaccines = [];
+var patients = [];
+ 
+for (var i = 0; i<N; i++){
+    vaccines[i] = sc.nextInt();
+}
+for (var i = 0; i<N; i++){
+    patients[i] = sc.nextInt();
+    
+}
+bubbleSort(vaccines,N);
+bubbleSort(patients,N);
+for (var i = 0; i<N;i++){
+    
+    if (vaccines[i]<patients[i]){
+    canCure = false;
+    break;
+        
+    }
+}
+if (canCure === true) print("Yes");
+else print("No");
+// End of input processing code.
+function bubbleSort(a,n){
+    var temp;
+    for (var i = 0; i<n-1; i++){
+        for (var k = 0; k<n-k-1; k++){
+            if (a[k]<a[k+1]){
+                temp = a[k];
+                a[k] = a[k+1];
+                a[k+1] = temp;
+            }
+        }
+    }
+    
+}
+
+JavaScript(Node.js):
+// Sample code to perform I/O:
+ 
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+var stdin_input = "";
+ 
+process.stdin.on("data", function (input) {
+    stdin_input += input;                               // Reading input from STDIN
+});
+ 
+process.stdin.on("end", function () {
+   main(stdin_input);
+});
+ 
+function main(input) {
+    process.stdout.write("Hi, " + input + ".\n");       // Writing output to STDOUT
+}
+ 
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+ 
+// Write your code here
+process.stdin.resume();
+process.stdin.setEncoding("utf-8");
+var stdin_input = "";
+var stdin_input_array = "";
+var stdin_current_line = 0;
+ 
+process.stdin.on("data", function (input) {
+    stdin_input += input;                               // Reading input from STDIN
+});
+ 
+process.stdin.on("end", function () {
+   stdin_input_array = stdin_input.split("\n");
+   main(stdin_input);
+});
+ 
+function readLine() {
+    return stdin_input_array[stdin_current_line++];
+}
+ 
+function bubble_sort(a) {
+    var swapped;
+    do {
+        swapped = false;
+        for (i=0; i<a.length; i++){
+            if (a[i]>a[i+1]){
+                var temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+                swapped = true;
+            }
+        }
+    } while(swapped);
+}
+ 
+function main(input) {
+    var N = parseInt(readLine());
+    var V = readLine().split(" ");
+    var P = readLine().split(" ");
+    var saved = "Yes";
+    // for(i=0; i<N; i++){
+    //     V[i] = parseInt(V[i]);
+    // }
+    // for(i=0; i<N; i++){
+    //     P[i] = parseInt(P[i]);
+    // }
+    bubble_sort(V);
+    bubble_sort(P);
+    for(i=0; i<N; i++){
+        if (V[i] < P[i]){
+            saved = "No";
+        }
+    }
+    console.log(saved);       // Writing output to STDOUT
+}
+
+Perl:
+chomp(my $le=<>);
+for(0..$le)
+{
+	chomp($in1=<>);
+	chomp($in2=<>);}
+	my @nani=split(" ",$in1);
+	my @nani1=split(" ",$in2);
+	my $count=0;
+	for(my $i=0;$i<@nani;$i++)
+	{
+		if($nani[$i]>$nani1[$i])
+		{
+			$count=0;
+		}
+		else
+		{
+			$count=1;
+			last;
+		}
+	}
+if($count=1)
+{
+	print "No\n";
+}else{
+print "Yes\n";
+}
+
+
+Pascal:
+var
+  ok,n,i,j,p:integer;
+  x,y:array[1..10] of integer;
+ 
+begin
+  readln(n);
+ 
+  for i:=1 to n do read(x[i]);
+  for i:=1 to n do read(y[i]);
+ 
+  for i:=1 to n- 1 do
+    for j:=1 to n - i do
+      begin
+      if x[j] > x[j + 1] then
+          begin
+            p:=x[j];
+            x[j]:=x[j + 1];
+            x[j + 1]:=p
+          end;
+      if y[j] > y[j + 1] then
+          begin
+            p:=y[j];
+            y[j]:=y[j + 1];
+            y[j + 1]:=p
+          end;
+      end;
+ 
+ 
+  for i:=1 to n do
+    if(x[i]<=y[i]) then 
+        begin
+        ok:=0;
+        break;
+        end;
+        
+  if(ok=1) then writeln('Yes')
+    else writeln('No');
+end.
+
+
+Python:
+'''
+# Read input from stdin and provide input before running code
+ 
+name = raw_input('What is your name?\n')
+print 'Hi, %s.' % name
+'''
+cnt = int(raw_input())
+vacStr = map(int, raw_input().split())
+patStr = map(int, raw_input().split())
+vacStr.sort()
+patStr.sort()
+saveAll = True
+for x in xrange(0, cnt - 1):
+	if vacStr[x] <= patStr[x]:
+		print "No"
+		saveAll = False
+		break
+if saveAll:
+	print "Yes"
+
+
+Python 3:
+n = int(input())
+ 
+s_v=[int(y) for y in (input().split())]
+m_c=[int(z) for z in (input().split())]
+ 
+s_v.sort()
+m_c.sort()
+ 
+for i in range(n):
+    if s_v[i]<m_c[i]:
+        print('No')
+        break
+else:
+     print('Yes')
+
+
+
+PHP:
+<?php
+ 
+$t = intval(fgets(STDIN));
+$v = explode(" ", trim(fgets(STDIN)));
+sort($v);
+$p = explode(" ", trim(fgets(STDIN)));
+sort($p);
+$a = "Yes";
+for($i=0; $i<$t; $i++)
+{
+	if(intval($v[$i]) <= intval($p[$i]))
+	{
+		$a = "No";
+		break;
+	}
+}
+echo $a;
+ 
+?>
+
+
+Ruby:
+#!/usr/bin/env ruby
+ 
+STDIN.gets
+vaccines_mc_counts = STDIN.gets.split.sort
+patients_mc_counts = STDIN.gets.split.sort
+ 
+patients_safety = vaccines_mc_counts.zip(patients_mc_counts).all? { |(x, y)| x > y }
+puts patients_safety ? 'Yes' : 'No'
+
+
+R:
+N <- 5
+VS_stored <- c(126,146,454,456,542)
+MC_stored <- c(100,200,248,328,689)
+vacc_selected <- 1
+while(vacc_selected<=5){
+  if(min(MC_stored,na.rm = TRUE)<VS_stored[vacc_selected]){
+    person_cured <- which.min(MC_stored)
+    VS_stored[vacc_selected] <- NA
+    MC_stored[person_cured] <- NA
+    vacc_selected <- which.min(VS_stored)
+    if(length(vacc_selected)==0){
+      vacc_selected <- 6
+      cat("No")
+    }
+  }else{
+    VS_stored[vacc_selected] <- NA
+    vacc_selected <- vacc_selected + 1
+  }
+}
+
+VB:
+Module Main
+ 
+   Public Function BubbleSort(ByRef Arr() As String, ByVal Len As Integer) As Integer
+            Dim temp As Integer, count As Integer = 0
+            For i As Integer = 0 To Len - 2
+                For j As Integer = 0 To Len - 2
+                    If CInt(Arr(j)) > CInt(Arr(j + 1)) Then
+                        temp = Arr(j)
+                        Arr(j) = Arr(j + 1)
+                        Arr(j + 1) = temp
+                        count += 1
+                    End If
+                Next
+            Next
+            Return count
+   End Function
+   
+    Sub Main()
+    	   Dim N As Integer = CInt(Console.ReadLine().Trim())
+        Dim Vac() As String = Split(Console.ReadLine().Trim(), " ")
+        Dim Mcnt() As String = Split(Console.ReadLine().Trim(), " ")
+        BubbleSort(Vac, N)
+        BubbleSort(Mcnt, N)
+        For i As Integer = 0 To N - 1
+            If CInt(Vac(i)) < CInt(Mcnt(i)) Then
+                Console.WriteLine("No")
+                Return
+            End If
+        Next
+        Console.WriteLine("Hello, world!")
+    End Sub
+ 
+End Module
+
+
+
+*/
